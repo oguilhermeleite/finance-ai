@@ -34,10 +34,13 @@
     <div class="nav-container">
       <a href="#home" class="logo"><span>🤖</span> FinanceAI</a>
       <div class="nav-links" id="navLinks">
+        <a href="#dashboard">Dashboard</a>
         <a href="#features">Recursos</a>
         <a href="#profiles">Perfis</a>
         <a href="#calculator">Calculadora</a>
+        <a href="#blog">Educação</a>
         <a href="#waitlist">Entrar na Lista</a>
+        <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">🌙</button>
       </div>
       <div class="mobile-menu-toggle" id="mobileToggle" aria-label="Abrir menu">
         <span></span><span></span><span></span>
@@ -115,6 +118,94 @@
     </div>
   </section>
 
+  <!-- Dashboard Section -->
+  <section id="dashboard" class="dashboard">
+    <div class="container">
+      <div class="section-header">
+        <h2>Dashboard Bitcoin</h2>
+        <p>Métricas em tempo real do mercado de Bitcoin</p>
+      </div>
+      
+      <!-- Key Metrics Grid -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-icon">₿</div>
+          <div class="metric-info">
+            <h3>Preço Bitcoin</h3>
+            <div class="metric-value" id="dashBtcPrice">R$ 245.890</div>
+            <div class="metric-change positive" id="dashBtcChange">+2.5% (24h)</div>
+          </div>
+        </div>
+        
+        <div class="metric-card">
+          <div class="metric-icon">📊</div>
+          <div class="metric-info">
+            <h3>Market Cap</h3>
+            <div class="metric-value" id="dashMarketCap">R$ 4.8T</div>
+            <div class="metric-change neutral">Dominância: 42%</div>
+          </div>
+        </div>
+        
+        <div class="metric-card">
+          <div class="metric-icon">⛏️</div>
+          <div class="metric-info">
+            <h3>Hash Rate</h3>
+            <div class="metric-value" id="dashHashRate">489 EH/s</div>
+            <div class="metric-change positive">+1.2% (7d)</div>
+          </div>
+        </div>
+        
+        <div class="metric-card">
+          <div class="metric-icon">🎯</div>
+          <div class="metric-info">
+            <h3>Dificuldade</h3>
+            <div class="metric-value" id="dashDifficulty">62.5T</div>
+            <div class="metric-change neutral">Próximo ajuste: 3d</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Section -->
+      <div class="charts-container">
+        <div class="chart-card">
+          <div class="chart-header">
+            <h3>Histórico de Preços</h3>
+            <div class="chart-timeframes">
+              <button class="timeframe-btn active" data-period="7d">7D</button>
+              <button class="timeframe-btn" data-period="30d">30D</button>
+              <button class="timeframe-btn" data-period="1y">1A</button>
+            </div>
+          </div>
+          <div class="chart-container">
+            <canvas id="priceChart" width="800" height="400"></canvas>
+          </div>
+        </div>
+        
+        <div class="whale-alerts-card">
+          <h3>🐋 Movimentações Recentes</h3>
+          <div id="realtimeWhaleAlerts" class="whale-alerts-list">
+            <!-- Populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Fear & Greed Index -->
+      <div class="fear-greed-container">
+        <div class="fear-greed-card">
+          <h3>📊 Fear & Greed Index</h3>
+          <div class="fear-greed-gauge">
+            <div class="gauge-container">
+              <div class="gauge-arc" id="fearGreedArc"></div>
+              <div class="gauge-value" id="fearGreedValue">72</div>
+            </div>
+            <div class="gauge-label" id="fearGreedLabel">Greed</div>
+          </div>
+          <p class="fear-greed-desc">Baseado em volatilidade, volume, redes sociais e tendências.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Features Section -->
   <section id="features" class="features">
     <div class="container">
@@ -168,6 +259,421 @@
       </div>
     </div>
   </section>
+
+  <!-- Blog/Education Section -->
+  <section id="blog" class="blog">
+    <div class="container">
+      <div class="section-header">
+        <h2>Educação Financeira</h2>
+        <p>Aprenda sobre Bitcoin e investimentos com conteúdo especializado</p>
+      </div>
+
+      <!-- Search and Filter -->
+      <div class="blog-controls">
+        <div class="search-container">
+          <input type="text" id="blogSearch" placeholder="Buscar artigos..." class="search-input">
+          <span class="search-icon">🔍</span>
+        </div>
+        <div class="filter-tags">
+          <button class="tag-btn active" data-tag="all">Todos</button>
+          <button class="tag-btn" data-tag="iniciante">Iniciante</button>
+          <button class="tag-btn" data-tag="dca">DCA</button>
+          <button class="tag-btn" data-tag="analise">Análise</button>
+          <button class="tag-btn" data-tag="seguranca">Segurança</button>
+        </div>
+      </div>
+
+      <!-- Featured Article -->
+      <div class="featured-article">
+        <div class="article-image">
+          <div class="article-badge">Em Destaque</div>
+          <div class="placeholder-image">📊</div>
+        </div>
+        <div class="article-content">
+          <div class="article-meta">
+            <span class="article-tag">Análise</span>
+            <span class="read-time">8 min de leitura</span>
+          </div>
+          <h3>Bitcoin: Análise Técnica para 2024</h3>
+          <p>Descubra as principais tendências e níveis de suporte/resistência do Bitcoin para o próximo ano. Incluindo análise on-chain e indicadores fundamentais.</p>
+          <button class="btn btn-secondary" onclick="openArticle('bitcoin-analise-2024')">Ler Artigo</button>
+        </div>
+      </div>
+
+      <!-- Articles Grid -->
+      <div class="articles-grid">
+        <article class="article-card" data-tags="iniciante,dca">
+          <div class="article-image">
+            <div class="placeholder-image">₿</div>
+          </div>
+          <div class="article-content">
+            <div class="article-meta">
+              <span class="article-tag">Iniciante</span>
+              <span class="read-time">5 min</span>
+            </div>
+            <h3>O que é DCA e como começar</h3>
+            <p>Aprenda a estratégia de Dollar Cost Averaging (DCA) e como aplicar no Bitcoin de forma consistente.</p>
+            <button class="read-more-btn" onclick="openArticle('dca-iniciante')">Ler mais</button>
+          </div>
+        </article>
+
+        <article class="article-card" data-tags="seguranca">
+          <div class="article-image">
+            <div class="placeholder-image">🔒</div>
+          </div>
+          <div class="article-content">
+            <div class="article-meta">
+              <span class="article-tag">Segurança</span>
+              <span class="read-time">12 min</span>
+            </div>
+            <h3>Carteiras Bitcoin: Cold vs Hot</h3>
+            <p>Entenda as diferenças entre carteiras frias e quentes, e qual a melhor opção para seu perfil de investidor.</p>
+            <button class="read-more-btn" onclick="openArticle('carteiras-bitcoin')">Ler mais</button>
+          </div>
+        </article>
+
+        <article class="article-card" data-tags="analise">
+          <div class="article-image">
+            <div class="placeholder-image">📈</div>
+          </div>
+          <div class="article-content">
+            <div class="article-meta">
+              <span class="article-tag">Análise</span>
+              <span class="read-time">10 min</span>
+            </div>
+            <h3>Ciclos do Bitcoin: Quando comprar?</h3>
+            <p>Análise histórica dos ciclos de alta e baixa do Bitcoin, com indicadores para identificar oportunidades.</p>
+            <button class="read-more-btn" onclick="openArticle('ciclos-bitcoin')">Ler mais</button>
+          </div>
+        </article>
+
+        <article class="article-card" data-tags="iniciante">
+          <div class="article-image">
+            <div class="placeholder-image">🎓</div>
+          </div>
+          <div class="article-content">
+            <div class="article-meta">
+              <span class="article-tag">Iniciante</span>
+              <span class="read-time">7 min</span>
+            </div>
+            <h3>Primeiros passos no Bitcoin</h3>
+            <p>Guia completo para quem está começando: como comprar, onde guardar e primeiras estratégias de investimento.</p>
+            <button class="read-more-btn" onclick="openArticle('primeiros-passos')">Ler mais</button>
+          </div>
+        </article>
+
+        <article class="article-card" data-tags="dca,analise">
+          <div class="article-image">
+            <div class="placeholder-image">📊</div>
+          </div>
+          <div class="article-content">
+            <div class="article-meta">
+              <span class="article-tag">DCA</span>
+              <span class="read-time">6 min</span>
+            </div>
+            <h3>DCA vs Timing: Qual estratégia vence?</h3>
+            <p>Comparativo histórico entre DCA e tentativas de timing do mercado, com dados reais dos últimos 10 anos.</p>
+            <button class="read-more-btn" onclick="openArticle('dca-vs-timing')">Ler mais</button>
+          </div>
+        </article>
+
+        <article class="article-card" data-tags="seguranca,iniciante">
+          <div class="article-image">
+            <div class="placeholder-image">🛡️</div>
+          </div>
+          <div class="article-content">
+            <div class="article-meta">
+              <span class="article-tag">Segurança</span>
+              <span class="read-time">9 min</span>
+            </div>
+            <h3>Golpes mais comuns em cripto</h3>
+            <p>Identifique e evite os principais golpes no mundo das criptomoedas. Proteja seus investimentos com conhecimento.</p>
+            <button class="read-more-btn" onclick="openArticle('golpes-cripto')">Ler mais</button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Interactive Glossary -->
+      <div class="glossary-section">
+        <h3>📖 Glossário Crypto</h3>
+        <div class="glossary-search">
+          <input type="text" id="glossarySearch" placeholder="Buscar termo..." class="search-input">
+        </div>
+        <div class="glossary-grid" id="glossaryGrid">
+          <div class="glossary-item" data-term="bitcoin">
+            <h4>Bitcoin</h4>
+            <p>A primeira criptomoeda descentralizada, criada por Satoshi Nakamoto em 2009.</p>
+          </div>
+          <div class="glossary-item" data-term="dca">
+            <h4>DCA (Dollar Cost Averaging)</h4>
+            <p>Estratégia de investimento que consiste em comprar um ativo regularmente, independente do preço.</p>
+          </div>
+          <div class="glossary-item" data-term="whale">
+            <h4>Whale (Baleia)</h4>
+            <p>Investidor que possui grande quantidade de Bitcoin, capaz de influenciar o preço do mercado.</p>
+          </div>
+          <div class="glossary-item" data-term="hodl">
+            <h4>HODL</h4>
+            <p>Estratégia de manter Bitcoin por longo prazo, independente da volatilidade de curto prazo.</p>
+          </div>
+          <div class="glossary-item" data-term="hash-rate">
+            <h4>Hash Rate</h4>
+            <p>Medida da poder computacional total da rede Bitcoin, indica segurança da rede.</p>
+          </div>
+          <div class="glossary-item" data-term="halving">
+            <h4>Halving</h4>
+            <p>Evento que ocorre a cada 4 anos onde a recompensa dos mineradores é reduzida pela metade.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof Section -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <h2>O que nossos usuários dizem</h2>
+        <p>Milhares de investidores já transformaram sua relação com Bitcoin</p>
+      </div>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"O FinanceAI me ajudou a entender DCA de verdade. Em 6 meses consegui ser mais consistente nos aportes e reduzir a ansiedade do mercado."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">👨‍💼</div>
+            <div class="author-info">
+              <h4>Carlos Silva</h4>
+              <span>Engenheiro, São Paulo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"As simulações são incríveis! Testei várias estratégias antes de investir dinheiro real. Economizei tempo e evitei erros custosos."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">👩‍💻</div>
+            <div class="author-info">
+              <h4>Ana Costa</h4>
+              <span>Desenvolvedora, Rio de Janeiro</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+            <p>"Finalmente encontrei um coach financeiro que fala a minha língua. O conteúdo educacional é de outro nível."</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">👨‍🎓</div>
+            <div class="author-info">
+              <h4>Roberto Lima</h4>
+              <span>Professor, Belo Horizonte</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Success Stats -->
+      <div class="success-stats">
+        <div class="stat-item">
+          <div class="stat-number">12.5K+</div>
+          <div class="stat-label">Usuários Ativos</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">R$ 45M+</div>
+          <div class="stat-label">Em Simulações</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">95%</div>
+          <div class="stat-label">Taxa de Satisfação</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">78%</div>
+          <div class="stat-label">Melhoraram Performance</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription Plans -->
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <div class="section-header">
+        <h2>Planos de Assinatura</h2>
+        <p>Escolha o plano ideal para sua jornada de investimentos</p>
+      </div>
+      
+      <div class="pricing-grid">
+        <div class="plan-card">
+          <div class="plan-header">
+            <h3>Gratuito</h3>
+            <div class="plan-price">
+              <span class="currency">R$</span>
+              <span class="amount">0</span>
+              <span class="period">/mês</span>
+            </div>
+          </div>
+          <div class="plan-features">
+            <div class="feature">✅ Calculadora DCA básica</div>
+            <div class="feature">✅ Artigos educacionais</div>
+            <div class="feature">✅ Glossário crypto</div>
+            <div class="feature">✅ Perfil de investidor</div>
+            <div class="feature disabled">❌ Dashboard avançado</div>
+            <div class="feature disabled">❌ Alertas personalizados</div>
+            <div class="feature disabled">❌ Suporte prioritário</div>
+          </div>
+          <button class="btn btn-secondary plan-btn">Começar Grátis</button>
+        </div>
+
+        <div class="plan-card popular">
+          <div class="plan-badge">Mais Popular</div>
+          <div class="plan-header">
+            <h3>Pro</h3>
+            <div class="plan-price">
+              <span class="currency">R$</span>
+              <span class="amount">29</span>
+              <span class="period">/mês</span>
+            </div>
+          </div>
+          <div class="plan-features">
+            <div class="feature">✅ Tudo do plano Gratuito</div>
+            <div class="feature">✅ Dashboard completo</div>
+            <div class="feature">✅ Alertas whale personalizados</div>
+            <div class="feature">✅ Simulador de portfólio</div>
+            <div class="feature">✅ Análises técnicas semanais</div>
+            <div class="feature">✅ Suporte por chat</div>
+            <div class="feature disabled">❌ Consultoria 1:1</div>
+          </div>
+          <button class="btn btn-primary plan-btn">Começar Teste Grátis</button>
+          <small>7 dias grátis, cancele quando quiser</small>
+        </div>
+
+        <div class="plan-card">
+          <div class="plan-header">
+            <h3>Enterprise</h3>
+            <div class="plan-price">
+              <span class="currency">R$</span>
+              <span class="amount">99</span>
+              <span class="period">/mês</span>
+            </div>
+          </div>
+          <div class="plan-features">
+            <div class="feature">✅ Tudo do plano Pro</div>
+            <div class="feature">✅ Consultoria 1:1 mensal</div>
+            <div class="feature">✅ Relatórios personalizados</div>
+            <div class="feature">✅ API para integração</div>
+            <div class="feature">✅ Suporte telefônico</div>
+            <div class="feature">✅ Acesso beta features</div>
+            <div class="feature">✅ Sem limites de uso</div>
+          </div>
+          <button class="btn btn-secondary plan-btn">Falar com Vendas</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section id="newsletter" class="newsletter">
+    <div class="container">
+      <div class="newsletter-content">
+        <div class="newsletter-text">
+          <h3>📬 Bitcoin Weekly</h3>
+          <p>Receba análises semanais, tendências de mercado e dicas de DCA direto no seu email</p>
+          <div class="newsletter-benefits">
+            <span class="benefit">✅ Análise semanal de mercado</span>
+            <span class="benefit">✅ Dicas de timing para DCA</span>
+            <span class="benefit">✅ Alertas de oportunidades</span>
+          </div>
+        </div>
+        <div class="newsletter-form">
+          <form id="newsletterForm" onsubmit="event.preventDefault(); subscribeNewsletter();">
+            <input type="email" id="newsletter-email" placeholder="Seu melhor email" required>
+            <button type="submit" class="btn btn-primary">Inscrever-se Grátis</button>
+          </form>
+          <p class="privacy-text">Sem spam. Cancele quando quiser. Dados protegidos.</p>
+          <div id="newsletter-msg" class="newsletter-msg"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <span>🤖</span> FinanceAI
+          </div>
+          <p>Coach financeiro com inteligência artificial para investidores de Bitcoin.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Twitter">🐦</a>
+            <a href="#" aria-label="YouTube">📺</a>
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="LinkedIn">💼</a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Produto</h4>
+          <ul>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#calculator">Calculadora DCA</a></li>
+            <li><a href="#blog">Educação</a></li>
+            <li><a href="#pricing">Planos</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Recursos</h4>
+          <ul>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#" onclick="openGlossary()">Glossário</a></li>
+            <li><a href="#" onclick="openGuides()">Guias</a></li>
+            <li><a href="#" onclick="openAPI()">API</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="#" onclick="openAbout()">Sobre</a></li>
+            <li><a href="#" onclick="openCareer()">Carreiras</a></li>
+            <li><a href="#" onclick="openPress()">Imprensa</a></li>
+            <li><a href="#" onclick="openContact()">Contato</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#" onclick="openPrivacy()">Privacidade</a></li>
+            <li><a href="#" onclick="openTerms()">Termos</a></li>
+            <li><a href="#" onclick="openDisclaimer()">Disclaimer</a></li>
+            <li><a href="#" onclick="openSecurity()">Segurança</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2024 FinanceAI. Todos os direitos reservados.</p>
+          <div class="footer-bottom-links">
+            <span>🇧🇷 Brasil</span>
+            <button id="langToggle" class="lang-toggle">🌐 PT/EN</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- JS externo -->
   <script src="app.js"></script>
