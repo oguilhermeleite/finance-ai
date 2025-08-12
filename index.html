@@ -146,3 +146,129 @@
   <script src="app.js"></script>
 </body>
 </html>
+<!-- Profiles Section -->
+<section id="profiles" class="profiles">
+  <div class="container">
+    <div class="section-header">
+      <h2>Perfis de Investidor</h2>
+      <p>Escolha o perfil que mais combina com seu momento.</p>
+    </div>
+    <div class="profiles-grid">
+      <article class="profile-card">
+        <div class="profile-icon">🟢</div>
+        <h3>Conservador</h3>
+        <span class="risk-level">Risco Baixo</span>
+        <ul>
+          <li>DCA pequeno e constante</li>
+          <li>Reserva de emergência primeiro</li>
+          <li>Foco em preservação</li>
+        </ul>
+      </article>
+
+      <article class="profile-card">
+        <div class="profile-icon">🟡</div>
+        <h3>Moderado</h3>
+        <span class="risk-level">Risco Médio</span>
+        <ul>
+          <li>DCA médio + rebalanceamento</li>
+          <li>Parte em caixa</li>
+          <li>Crescimento estável</li>
+        </ul>
+      </article>
+
+      <article class="profile-card">
+        <div class="profile-icon">🔴</div>
+        <h3>Arrojado</h3>
+        <span class="risk-level">Risco Alto</span>
+        <ul>
+          <li>Aportes maiores</li>
+          <li>Alta tolerância a volatilidade</li>
+          <li>Busca de máximo retorno</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Calculator Section -->
+<section id="calculator" class="features">
+  <div class="container">
+    <div class="section-header">
+      <h2>Calculadora DCA em Bitcoin</h2>
+      <p>Simule aportes mensais em BRL e veja projeções.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="crypto-calculator">
+        <div class="form-grid">
+          <label>Preço BTC (BRL)
+            <input id="calc-btc" type="number" min="0" step="0.01" placeholder="Ex: 400000">
+          </label>
+          <label>Aporte mensal (BRL)
+            <input id="calc-aporte" type="number" min="0" step="10" placeholder="Ex: 500">
+          </label>
+          <label>Anos
+            <input id="calc-anos" type="number" min="1" max="20" value="3">
+          </label>
+          <label>Retorno anual (%)
+            <input id="calc-ret" type="number" min="-100" max="500" value="30">
+          </label>
+        </div>
+        <button class="btn btn-primary" id="calc-btn">Calcular</button>
+        <div id="calc-out" class="calc-out" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="crypto-card">
+        <h3>🐋 Whale Alert (demo)</h3>
+        <div id="whaleStream" class="whale-list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Waitlist -->
+<section id="waitlist" class="profiles">
+  <div class="container">
+    <div class="section-header">
+      <h2>Entre na Lista</h2>
+      <p>Receba acesso antecipado ao FinanceAI.</p>
+    </div>
+
+    <form class="waitlist-form" onsubmit="event.preventDefault(); joinWaitlist();">
+      <input type="email" id="wl-email" placeholder="Seu e-mail" required>
+      <button class="btn btn-primary" type="submit">Quero participar</button>
+      <p id="wl-msg" class="muted" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<!-- FAB + Chat -->
+<div class="fab-container">
+  <button class="fab" id="fabBtn" aria-label="Abrir chat de ajuda">💬</button>
+  <span class="notification-badge" id="fabBadge">1</span>
+</div>
+
+<div class="chat-widget" id="chatWidget" role="dialog" aria-modal="true" aria-label="Assistente FinanceAI">
+  <div class="chat-header">
+    <h3>🤖 FinanceAI</h3>
+    <button class="chat-close" id="chatClose">×</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="chat-message bot">Oi! Posso te ajudar a montar seu plano de DCA em BTC.</div>
+  </div>
+  <div class="chat-input">
+    <input id="chatInput" type="text" placeholder="Pergunte algo...">
+    <button id="chatSend">➤</button>
+  </div>
+</div>
+
+<!-- Cookie Banner -->
+<div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies">
+  <div class="cookie-content">
+    <p>Usamos cookies para melhorar sua experiência. Você aceita?</p>
+    <div class="cookie-buttons">
+      <button class="cookie-btn cookie-accept" type="button" id="cookieAccept">Aceitar</button>
+      <button class="cookie-btn cookie-decline" type="button" id="cookieDecline">Recusar</button>
+    </div>
+  </div>
+</div>
