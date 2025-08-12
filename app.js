@@ -14,6 +14,9 @@ document.addEventListener('scroll', () => {
 // Smooth scroll
 window.scrollToSection = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
+// Specific scroll functions
+window.scrollToRoadmap = () => scrollToSection('roadmap');
+
 // Mobile menu toggle (mostra/esconde .nav-links em telas pequenas)
 $('#mobileToggle')?.addEventListener('click', () => {
   const nav = $('#navLinks');

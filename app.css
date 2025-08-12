@@ -109,7 +109,7 @@ nav.scrolled{box-shadow:0 4px 6px rgba(0,0,0,.1)}
 .quiz-option:hover{border-color:var(--primary);transform:translateX(5px)}
 .quiz-option.selected{background:var(--primary);color:#fff;border-color:var(--primary)}
 
-/* Features Section */
+/* Features & Roadmap Sections */
 .features{padding:4rem 2rem;background:#fff}
 .container{max-width:1200px;margin:0 auto}
 .section-header{text-align:center;margin-bottom:3rem}
