@@ -2,56 +2,59 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FinanceAI - Coach Financeiro com Inteligência Artificial</title>
-  <meta name="description" content="Orientação financeira com IA para brasileiros. Descubra seu perfil e simule estratégias com Bitcoin sem mexer com dinheiro real." />
-  <meta name="keywords" content="Bitcoin, investimentos, finanças, IA, DCA, Brasil, coach financeiro, criptomoedas" />
+  <meta name="description" content="Orientação financeira personalizada com IA para investidores brasileiros. Descubra sua estratégia ideal sem lidar com dinheiro real.">
+  <meta name="keywords" content="investimentos, finanças, inteligência artificial, coach financeiro, Brasil, Bitcoin, criptomoedas">
+
   <!-- Favicon emoji inline -->
   <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='58' x='50' text-anchor='middle' font-size='80'>🤖</text></svg>">
-  <link rel="preconnect" href="https://api.coingecko.com">
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='50%' x='50%' text-anchor='middle' font-size='80'>🤖</text></svg>">
+
+  <!-- CSS externo -->
   <link rel="stylesheet" href="app.css" />
 </head>
 <body>
+  <!-- Crypto Market Ticker -->
+  <div class="market-ticker">
+    <div class="ticker-content">
+      <span class="ticker-item"><span>₿ Bitcoin</span> <span class="ticker-positive" id="btc-price">R$ 245.890</span></span>
+      <span class="ticker-item"><span>Ξ Ethereum</span> <span class="ticker-negative" id="eth-price">R$ 12.450</span></span>
+      <span class="ticker-item"><span>🪙 BNB</span> <span class="ticker-positive">R$ 1.580</span></span>
+      <span class="ticker-item"><span>💎 Solana</span> <span class="ticker-positive">R$ 485</span></span>
+      <span class="ticker-item"><span>📊 Fear &amp; Greed</span> <span style="color:#10b981;">72 - Greed</span></span>
+    </div>
+  </div>
+
   <!-- Progress Bar -->
   <div class="progress-bar" id="progressBar"></div>
 
   <!-- Navigation -->
   <nav id="navbar">
     <div class="nav-container">
-      <a href="#home" class="logo" aria-label="Ir para o início"><span>🤖</span> FinanceAI</a>
-      <div class="nav-links" id="navLinks" role="navigation" aria-label="Navegação principal">
+      <a href="#home" class="logo"><span>🤖</span> FinanceAI</a>
+      <div class="nav-links" id="navLinks">
         <a href="#features">Recursos</a>
         <a href="#profiles">Perfis</a>
         <a href="#calculator">Calculadora</a>
-        <a href="#waitlist" class="nav-cta">Entrar na Lista</a>
+        <a href="#waitlist">Entrar na Lista</a>
       </div>
-      <button class="mobile-menu-toggle" id="mobileToggle" aria-label="Abrir menu móvel" aria-expanded="false" aria-controls="navLinks">
+      <div class="mobile-menu-toggle" id="mobileToggle" aria-label="Abrir menu">
         <span></span><span></span><span></span>
-      </button>
+      </div>
     </div>
   </nav>
 
-  <!-- Market Ticker -->
-  <div class="market-ticker" aria-live="polite">
-    <div class="ticker-content">
-      <span class="ticker-item"><span>₿ Bitcoin</span> <span id="btc-price" class="ticker-positive">R$ —</span></span>
-      <span class="ticker-item"><span>Ξ Ethereum</span> <span id="eth-price" class="ticker-neutral">R$ —</span></span>
-      <span class="ticker-item"><span>💎 Solana</span> <span id="sol-price" class="ticker-neutral">R$ —</span></span>
-      <span class="ticker-item"><span>📊 Fear &amp; Greed</span> <span id="fg-index" class="ticker-neutral">—</span></span>
-    </div>
-  </div>
-
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section id="home" class="hero">
     <div class="hero-container">
       <div class="hero-content">
         <h1>Coach Financeiro de Bitcoin com IA</h1>
-        <p>Domine cripto com orientação personalizada e simulações inteligentes — sem risco real.</p>
+        <p>Domine o mercado de criptomoedas com orientação personalizada de inteligência artificial.</p>
 
         <div class="hero-stats">
           <div class="stat">
-            <div id="btcPriceMain" class="stat-number" style="color:#f7931a;">R$ —</div>
+            <div class="stat-number" id="btcPriceMain" style="font-size:1.8rem;color:#f7931a;">R$ 245.890</div>
             <div class="stat-label">Bitcoin Agora</div>
           </div>
           <div class="stat">
@@ -65,198 +68,81 @@
         </div>
 
         <div class="hero-buttons">
-          <button class="btn btn-primary" type="button" onclick="scrollToSection('waitlist')">🚀 Começar Jornada Crypto</button>
-          <button class="btn btn-secondary" type="button" onclick="startDemo()">₿ Simular Investimento</button>
+          <button class="btn btn-primary" onclick="scrollToSection('waitlist')">🚀 Começar Jornada Crypto</button>
+          <button class="btn btn-secondary" onclick="startDemo()">₿ Simular Investimento</button>
         </div>
 
-        <!-- Live Bitcoin Card -->
+        <!-- Live Bitcoin Price -->
         <div class="crypto-card" style="margin-top:2rem;">
           <h3>💹 Mercado Agora</h3>
-          <div class="flex-between">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
             <div>
-              <div id="btcLivePrice" class="btc-price-display">R$ —</div>
-              <small class="muted">Atualizado em tempo real (com fallback offline)</small>
+              <div class="btc-price-display" id="btcLivePrice" style="font-size:2.5rem;">R$ 245.890</div>
+              <small style="opacity:.7;">Atualizado em tempo real</small>
             </div>
-            <div class="mining-animation" aria-hidden="true">
+            <div class="mining-animation">
               <div class="mining-block"></div>
               <div class="mining-block"></div>
               <div class="mining-block"></div>
             </div>
-          </div>
-        </div>
-
-        <!-- Halving -->
-        <div class="halving-countdown" aria-live="polite">
-          <div>⛏ Próximo Halving do Bitcoin</div>
-          <div class="halving-timer" id="halvingTimer">
-            <div class="timer-unit"><div class="timer-value" id="d">—</div><div class="timer-label">Dias</div></div>
-            <div class="timer-unit"><div class="timer-value" id="h">—</div><div class="timer-label">Horas</div></div>
-            <div class="timer-unit"><div class="timer-value" id="m">—</div><div class="timer-label">Min</div></div>
-            <div class="timer-unit"><div class="timer-value" id="s">—</div><div class="timer-label">Seg</div></div>
           </div>
         </div>
       </div>
 
-      <!-- Demo / Quiz -->
-      <div class="hero-demo" aria-label="Questionário de perfil">
+      <div class="hero-demo">
         <div class="demo-header">
           <span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span>
         </div>
         <div class="quiz-container" id="quizContainer">
-          <div class="quiz-progress" id="quizProgress"></div>
-          <div class="quiz-question" id="quizQuestion">
-            <!-- conteúdo gerado pelo JS -->
+          <div class="quiz-progress">
+            <span class="progress-dot active"></span>
+            <span class="progress-dot"></span>
+            <span class="progress-dot"></span>
+            <span class="progress-dot"></span>
           </div>
-          <button class="btn btn-primary" type="button" id="quizNext">Continuar</button>
+          <div class="quiz-question">
+            <h3>💎 Qual é seu objetivo financeiro principal?</h3>
+            <div class="quiz-options">
+              <div class="quiz-option" onclick="selectOption(this)">Criar uma reserva de emergência</div>
+              <div class="quiz-option" onclick="selectOption(this)">Aposentadoria confortável</div>
+              <div class="quiz-option" onclick="selectOption(this)">Multiplicar patrimônio rapidamente</div>
+              <div class="quiz-option" onclick="selectOption(this)">Renda extra mensal</div>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="nextQuestion()" style="margin-top:1rem;width:100%;">Continuar</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Features -->
+  <!-- Features Section -->
   <section id="features" class="features">
     <div class="container">
       <div class="section-header">
         <h2>Recursos Crypto Inteligentes</h2>
-        <p>Ferramentas exclusivas para dominar Bitcoin.</p>
+        <p>Ferramentas exclusivas para dominar o mercado de Bitcoin</p>
       </div>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">₿</div>
           <h3>Análise On-Chain</h3>
-          <p>Hash rate, dificuldade, endereços ativos e fluxo de exchanges em um só lugar.</p>
+          <p>Monitore métricas on-chain em tempo real: hash rate, dificuldade, endereços ativos e fluxo de exchanges.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🐋</div>
           <h3>Whale Alert</h3>
-          <p>Alertas de grandes movimentações para antecipar volatilidade.</p>
+          <p>Receba alertas quando grandes movimentações (whales) acontecerem no mercado.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📊</div>
-          <h3>DCA Inteligente</h3>
-          <p>Simule compras periódicas e compare cenários de risco/retorno.</p>
+          <h3>DCA</h3>
+          <p>Simule compras periódicas de Bitcoin e compare cenários.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Profiles -->
-  <section id="profiles" class="profiles">
-    <div class="container">
-      <div class="section-header">
-        <h2>Perfis de Investidor</h2>
-        <p>Escolha o perfil que mais combina com seu momento.</p>
-      </div>
-      <div class="profiles-grid">
-        <article class="profile-card" tabindex="0">
-          <div class="profile-icon">🟢</div>
-          <h3>Conservador</h3>
-          <span class="risk-level">Risco Baixo</span>
-          <ul>
-            <li>DCA pequeno e constante</li>
-            <li>Reserva de emergência primeiro</li>
-            <li>Objetivo: preservação</li>
-          </ul>
-        </article>
-        <article class="profile-card" tabindex="0">
-          <div class="profile-icon">🟡</div>
-          <h3>Moderado</h3>
-          <span class="risk-level">Risco Médio</span>
-          <ul>
-            <li>DCA médio + rebalanceamento</li>
-            <li>Parcial em BTC, resto em caixa</li>
-            <li>Objetivo: crescimento estável</li>
-          </ul>
-        </article>
-        <article class="profile-card" tabindex="0">
-          <div class="profile-icon">🔴</div>
-          <h3>Arrojado</h3>
-          <span class="risk-level">Risco Alto</span>
-          <ul>
-            <li>DCA alto + aportes oportunos</li>
-            <li>Alta tolerância à volatilidade</li>
-            <li>Objetivo: maximizar retorno</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Calculator -->
-  <section id="calculator" class="features">
-    <div class="container">
-      <div class="section-header">
-        <h2>Calculadora DCA em Bitcoin</h2>
-        <p>Simule aportes mensais em BRL e veja projeções.</p>
-      </div>
-
-      <div class="features-grid">
-        <div class="crypto-calculator">
-          <div class="form-grid">
-            <label>Preço BTC (BRL) <input id="calc-btc" type="number" min="0" step="0.01" placeholder="Ex: 400000" aria-label="Preço do Bitcoin em reais"></label>
-            <label>Aporte mensal (BRL) <input id="calc-aporte" type="number" min="0" step="10" placeholder="Ex: 500" aria-label="Aporte mensal em reais"></label>
-            <label>Anos <input id="calc-anos" type="number" min="1" max="20" value="3" aria-label="Anos de investimento"></label>
-            <label>Retorno anual estimado (%) <input id="calc-ret" type="number" min="-100" max="500" value="30" aria-label="Retorno anual estimado em porcentagem"></label>
-          </div>
-          <button class="btn btn-primary" type="button" id="calc-btn">Calcular</button>
-          <div id="calc-out" class="calc-out" role="status" aria-live="polite"></div>
-        </div>
-
-        <div class="crypto-card">
-          <h3>🐋 Whale Alert (demo)</h3>
-          <div id="whaleStream" class="whale-list">
-            <!-- itens mock no JS -->
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Waitlist -->
-  <section id="waitlist" class="profiles">
-    <div class="container">
-      <div class="section-header">
-        <h2>Entre na Lista</h2>
-        <p>Receba acesso antecipado ao FinanceAI.</p>
-      </div>
-      <form class="waitlist-form" onsubmit="event.preventDefault(); joinWaitlist();">
-        <input type="email" id="wl-email" placeholder="Seu e-mail" required aria-label="Seu e-mail">
-        <button class="btn btn-primary" type="submit">Quero participar</button>
-        <p id="wl-msg" class="muted" role="status" aria-live="polite"></p>
-      </form>
-    </div>
-  </section>
-
-  <!-- Chat FAB -->
-  <div class="fab-container">
-    <button class="fab" id="fabBtn" aria-label="Abrir chat de ajuda">💬</button>
-    <span class="notification-badge" id="fabBadge" aria-hidden="true">1</span>
-  </div>
-  <div class="chat-widget" id="chatWidget" role="dialog" aria-modal="true" aria-label="Assistente FinanceAI">
-    <div class="chat-header">
-      <h3>🤖 FinanceAI</h3>
-      <button class="chat-close" id="chatClose" aria-label="Fechar chat">×</button>
-    </div>
-    <div class="chat-body" id="chatBody">
-      <div class="chat-message bot">Oi! Posso te ajudar a montar seu plano de DCA em BTC.</div>
-    </div>
-    <div class="chat-input">
-      <input id="chatInput" type="text" placeholder="Pergunte algo..." aria-label="Digite sua mensagem">
-      <button id="chatSend" aria-label="Enviar mensagem">➤</button>
-    </div>
-  </div>
-
-  <!-- Cookie Banner -->
-  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies">
-    <div class="cookie-content">
-      <p>Usamos cookies para melhorar sua experiência. Você aceita?</p>
-      <div class="cookie-buttons">
-        <button class="cookie-btn cookie-accept" type="button" id="cookieAccept">Aceitar</button>
-        <button class="cookie-btn cookie-decline" type="button" id="cookieDecline">Recusar</button>
-      </div>
-    </div>
-  </div>
-
+  <!-- JS externo -->
   <script src="app.js"></script>
 </body>
 </html>
