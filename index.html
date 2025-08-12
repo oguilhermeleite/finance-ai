@@ -580,31 +580,6 @@
     </div>
   </section>
 
-  <!-- Newsletter Section -->
-  <section id="newsletter" class="newsletter">
-    <div class="container">
-      <div class="newsletter-content">
-        <div class="newsletter-text">
-          <h3>📬 Bitcoin Weekly</h3>
-          <p>Receba análises semanais, tendências de mercado e dicas de DCA direto no seu email</p>
-          <div class="newsletter-benefits">
-            <span class="benefit">✅ Análise semanal de mercado</span>
-            <span class="benefit">✅ Dicas de timing para DCA</span>
-            <span class="benefit">✅ Alertas de oportunidades</span>
-          </div>
-        </div>
-        <div class="newsletter-form">
-          <form id="newsletterForm" onsubmit="event.preventDefault(); subscribeNewsletter();">
-            <input type="email" id="newsletter-email" placeholder="Seu melhor email" required>
-            <button type="submit" class="btn btn-primary">Inscrever-se Grátis</button>
-          </form>
-          <p class="privacy-text">Sem spam. Cancele quando quiser. Dados protegidos.</p>
-          <div id="newsletter-msg" class="newsletter-msg"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -759,19 +734,43 @@
   </div>
 </section>
 
-<!-- Waitlist -->
-<section id="waitlist" class="profiles">
+<!-- Waitlist + Newsletter -->
+<section id="waitlist" class="waitlist-newsletter">
   <div class="container">
     <div class="section-header">
       <h2>Entre na Lista</h2>
-      <p>Receba acesso antecipado ao FinanceAI.</p>
+      <p>Receba acesso antecipado ao FinanceAI e conteúdo exclusivo sobre Bitcoin</p>
     </div>
 
-    <form class="waitlist-form" onsubmit="event.preventDefault(); joinWaitlist();">
-      <input type="email" id="wl-email" placeholder="Seu e-mail" required>
-      <button class="btn btn-primary" type="submit">Quero participar</button>
-      <p id="wl-msg" class="muted" role="status" aria-live="polite"></p>
-    </form>
+    <div class="signup-content">
+      <!-- FinanceAI Waitlist -->
+      <div class="signup-section">
+        <h3>🚀 Acesso Antecipado</h3>
+        <p>Seja um dos primeiros a usar o FinanceAI e moldar o futuro dos investimentos em Bitcoin.</p>
+        <form class="waitlist-form" onsubmit="event.preventDefault(); joinWaitlist();">
+          <input type="email" id="wl-email" placeholder="Seu e-mail" required>
+          <button class="btn btn-primary" type="submit">Quero participar</button>
+          <p id="wl-msg" class="muted" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <!-- Bitcoin Weekly Newsletter -->
+      <div class="signup-section">
+        <h3>📬 Bitcoin Weekly</h3>
+        <p>Receba análises semanais, tendências de mercado e dicas de DCA direto no seu email</p>
+        <div class="newsletter-benefits">
+          <span class="benefit">✅ Análise semanal de mercado</span>
+          <span class="benefit">✅ Dicas de timing para DCA</span>
+          <span class="benefit">✅ Alertas de oportunidades</span>
+        </div>
+        <form id="newsletterForm" onsubmit="event.preventDefault(); subscribeNewsletter();">
+          <input type="email" id="newsletter-email" placeholder="Seu melhor email" required>
+          <button type="submit" class="btn btn-secondary">Inscrever-se Grátis</button>
+        </form>
+        <p class="privacy-text">Sem spam. Cancele quando quiser. Dados protegidos.</p>
+        <div id="newsletter-msg" class="newsletter-msg"></div>
+      </div>
+    </div>
   </div>
 </section>
 
